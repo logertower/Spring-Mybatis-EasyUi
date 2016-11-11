@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace用于java代码调用时识别指定xml的mapper文件 -->
+<mapper namespace="com.liutf.mvc.dao.mysql.UserMapper">
+	<!-- 为了返回list 类型而定义的returnMap -->
+	<resultMap id="resultUserList" type="com.liutf.mvc.entity.mysql.User">
+		<id property="id" column="ID" />
+		<result property="username" column="USERNAME" />
+		<result property="password" column="PASSWORD" />
+	</resultMap>
+
+	<sql id="select-user">
+		select * from user
+	</sql>
+
+	<sql id="select-count">
+		select count(1) from user
+	</sql>
+
+	<sql id="page">
+		<if
+			test="sort!=null and sort!='' and order!=null and order!='' and startIndex!=null and rows!=null">
+			order by ${sort} ${order}
+			limit ${startIndex},${rows}
+		</if>
+	</sql>
+
+
+
+	<!-- 通过用户Id查找一条记录 -->
+	<select id="selectUserById" resultMap="resultUserList">
+		<include refid="select-user" />
+		where USER_ID = #{userId}
+	</select>
+
+	<!-- 通过用户Id查找一条记录 -->
+	<select id="login" resultMap="resultUserList">
+		<include refid="select-user" />
+		where USERNAME=#{username} and PASSWORD=#{password}
+	</select>
+
+
+	<!-- 修改患者信息 -->
+	<update id="updateUserById">
+		update user set
+		<if test="username!=null">
+			USERNAME=#{username},
+		</if>
+		<if test="password!=null">
+			PASSWORD=#{password},
+		</if>
+		where USER_ID=#{userId}
+	</update>
+
+</mapper>  

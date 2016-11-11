@@ -1,0 +1,43 @@
+[
+     {
+        "attributes": {
+            "url": ""
+        },
+        "checked": false,
+        "iconCls": "cog",
+        "id": "001",
+        "pid": "0",
+        "state": "open",
+        "text": "系统管理"
+    },{
+        "attributes": {
+            "url": "http://www.baidu.com"
+        },
+        "checked": false,
+        "iconCls": "status_online",
+        "id": "001001",
+        "pid": "001",
+        "state": "open",
+        "text": "菜单一（百度）"
+    },{  
+    "attributes": {
+            "url": "http://www.baidu.com"
+        },
+        "checked": false,
+        "iconCls": "status_offline",
+        "id": "001003",
+        "pid": "001",
+        "state": "open",
+        "text": "菜单二（百度）"
+    },{
+    "attributes": {
+            "url": "http://www.baidu.com"
+        },
+        "checked": false,
+        "iconCls": "rainbow",
+        "id": "003",
+        "pid": "0",
+        "state": "open",
+        "text": "个人中心"
+    }
+]

@@ -1,0 +1,33 @@
+[
+   {
+    "attributes": {
+            "url": ""
+        },
+        "checked": false,
+        "iconCls": "heart",
+        "id": "002",
+        "pid": "0",
+        "state": "open",
+        "text": "科研项目管理"
+    },{
+    "attributes": {
+            "url": "/caseView/index.html"
+        },
+        "checked": false,
+        "iconCls": "book_open",
+        "id": "002001",
+        "pid": "002",
+        "state": "open",
+        "text": "病例查看"
+    },{
+    "attributes": {
+            "url": "/userCenter/index.html"
+        },
+        "checked": false,
+        "iconCls": "rainbow",
+        "id": "003",
+        "pid": "0",
+        "state": "open",
+        "text": "个人中心"
+    }
+]
