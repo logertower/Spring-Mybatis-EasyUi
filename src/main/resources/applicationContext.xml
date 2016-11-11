@@ -10,7 +10,7 @@
     <import resource="errorInfos.xml"/>
 
     <!-- 初始化信息 -->
-    <!--  <bean id="synonymUtil" class="com.founder.medical.utils.SynonymsUtil" init-method="startInitData">
+    <!--  <bean id="synonymUtil" class="com.liutf.mvc.utils.SynonymsUtil" init-method="startInitData">
          <property name="testValue" value="${testValue}"/>初始化测试参数
     </bean> -->
 

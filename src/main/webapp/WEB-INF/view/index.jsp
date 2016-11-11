@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>中医院科研平台</title>
+<title>spring-mybatis-easyui示例项目</title>
 <script type="text/javascript">
 	var index_tabs;
 	var index_tabsMenu;

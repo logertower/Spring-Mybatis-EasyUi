@@ -1,12 +1,4 @@
-/**
- * Copyright (C) 2014 	北京方正阿帕比技术有限公司	开发一部
- * 
- *	时间日期工具
- * 
- * 2014年7月9日
- * 
- * Li xiaolei (xl.li@founder.com) 
- */
+
 package com.liutf.mvc.utils;
 
 import java.text.ParseException;
