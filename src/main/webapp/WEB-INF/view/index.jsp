@@ -109,7 +109,7 @@
 </head>
 <body>
 
-	<jsp:include page="user/login.jsp"></jsp:include>
+	<%--<jsp:include page="user/login.jsp"></jsp:include>--%>
 	<jsp:include page="user/reg.jsp"></jsp:include>
 
 	<div id="index_layout">

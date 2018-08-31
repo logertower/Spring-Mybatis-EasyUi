@@ -98,11 +98,25 @@
 			$('#layout_west_tree').tree('collapseAll');
 		}
 	}
+
+	function openCustomerManagerTab(){
+		var paramobj = {
+			title: "用户信息管理",
+			iconCls: "status_online",
+			url: "${ctx}/layout/customer/customerManager.html"
+		}
+		addTab(paramobj);
+	}
+
 </script>
 <div class="easyui-accordion" data-options="fit:true,border:false">
 	<div title="系统菜单" style="padding: 5px;" data-options="border:false,isonCls:'anchor',tools :'#menu-tools'">
 		<div class="well well-small">
-			<ul id="layout_west_tree"></ul>
+			<ul id="layout_west_tree">
+				<li>
+					<a href="#" plain="true" iconCls="status_online" title="用户信息管理" onclick="openCustomerManagerTab();">用户信息管理</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 	

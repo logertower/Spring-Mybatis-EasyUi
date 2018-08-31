@@ -93,4 +93,11 @@ public class LayoutController {
         return mv;
     }
 
+
+    @RequestMapping("/customer/customerManager.html")
+    public ModelAndView customerManager(HttpSession session) {
+        ModelAndView mv = new ModelAndView("/customer/customerManager");
+        return mv;
+    }
+
 }
