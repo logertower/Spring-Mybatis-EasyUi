@@ -35,6 +35,12 @@
 	</properties>
 
 	<dependencies>
+		<!-- bimdb -->
+		<dependency>
+			<groupId>com.by</groupId>
+			<artifactId>bimdb</artifactId>
+			<version>1.0-borrow-SNAPSHOT</version>
+		</dependency>
 		<!-- ##  spring ## -->
 		<dependency>
 			<groupId>org.springframework</groupId>

@@ -6,16 +6,15 @@ package com.liutf.mvc.config;
  */
 public class MemberRedisConfig {
 
-    private String sentinel;
+    String sentinelHost;
+    String masterName;
 
-    private String masterName;
-
-    public String getSentinel() {
-        return sentinel;
+    public String getSentinelHost() {
+        return sentinelHost;
     }
 
-    public void setSentinel(String sentinel) {
-        this.sentinel = sentinel;
+    public void setSentinelHost(String sentinelHost) {
+        this.sentinelHost = sentinelHost;
     }
 
     public String getMasterName() {

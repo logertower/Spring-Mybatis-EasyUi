@@ -83,7 +83,7 @@ public class CustomerDao {
 
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setUrl(sqlServerConfig.getUrl());
-        basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        basicDataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         basicDataSource.setUsername(sqlServerConfig.getUsername());
         basicDataSource.setPassword(sqlServerConfig.getPassword());
         basicDataSource.setMaxActive(50);

@@ -1,5 +1,8 @@
 package com.liutf.mvc.redis;
 
+import com.by.bimdb.model.BPipeline;
+import com.by.bimdb.service.RedisSentinelService;
+import com.by.bimdb.service.impl.RedisSentinelServiceImpl;
 import com.liutf.mvc.config.ApiRedisConfig;
 import com.liutf.mvc.config.ByConfig;
 import com.liutf.mvc.config.ByConfigUtils;
@@ -61,6 +64,7 @@ public class CustomerRedisService {
             } finally {
                 try {
                     pipelined.close();
+                    jedis.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -75,17 +79,11 @@ public class CustomerRedisService {
      * 清除member的用户缓存
      */
     public boolean delCustomerCacheOfMember(Integer customerId, Integer idcard, String mobile, String wechatUnionid, String qqOpenId) {
-
-        String environment = MyThreadLocal.get();
-
-        ByConfig byConfig = ByConfigUtils.get(environment);
-
-        MemberRedisConfig memberRedisConfig = byConfig.getMemberRedisConfig();
-
-        Jedis jedis = new Jedis("", 0);//TODO ltf 等待初始化= new Jedis(memberRedisConfig.getMasterName())
-        Pipeline pipelined = jedis.pipelined();
-
         try {
+            RedisSentinelService redisSentinelService = getSentinel();
+            BPipeline bp = redisSentinelService.pipeline();
+            Pipeline pipelined = bp.pipeline();
+
             if (customerId != null && customerId > 0) {
                 String key = "member:cstm:info:" + customerId;
                 pipelined.del(key);
@@ -109,15 +107,9 @@ public class CustomerRedisService {
                 pipelined.del(key);
             }
 
-            pipelined.syncAndReturnAll();
+            bp.submitAndReturn();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                pipelined.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
         return true;
@@ -127,34 +119,42 @@ public class CustomerRedisService {
      * 删除member的等级缓存
      */
     public boolean delCustomerLevelPointCacheOfMember(Integer customerId) {
+        try {
+            RedisSentinelService redisSentinelService = getSentinel();
+            BPipeline bp = redisSentinelService.pipeline();
+            Pipeline pipelined = bp.pipeline();
 
+            if (customerId != null && customerId > 0) {
+                String key = "member:level:point:list:" + customerId;
+                pipelined.del(key);
+            }
+
+            bp.submitAndReturn();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return true;
+    }
+
+    private RedisSentinelService getSentinel() throws Exception {
         String environment = MyThreadLocal.get();
 
         ByConfig byConfig = ByConfigUtils.get(environment);
 
         MemberRedisConfig memberRedisConfig = byConfig.getMemberRedisConfig();
 
-        Jedis jedis = new Jedis("", 0);//TODO ltf 等待初始化= new Jedis(memberRedisConfig.getMasterName())
-        Pipeline pipelined = jedis.pipelined();
+        int appId = 10044;
+        int clusterId = 24;
+        String sentinelHost = memberRedisConfig.getSentinelHost();
+        String masterName = memberRedisConfig.getMasterName();
+        int maxWaitMillis = 1000;
+        int maxTotal = 100;
+        int minIdle = 50;
+        int maxIdle = 100;
+        int timeOut = 2000;
 
-        try {
-            if (customerId != null && customerId > 0) {
-                String key = "member:level:point:list:" + customerId;
-                pipelined.del(key);
-            }
-
-            pipelined.syncAndReturnAll();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                pipelined.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return true;
+        return new RedisSentinelServiceImpl(appId, clusterId, sentinelHost, masterName, maxWaitMillis, maxTotal, minIdle, maxIdle, timeOut);
     }
 
 }
