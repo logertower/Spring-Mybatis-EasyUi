@@ -33,8 +33,8 @@ public class ByConfigUtils {
         apiRedisConfigOfMojie2.setPort(6380);
 
         ApiRedisConfig apiRedisConfigOfMojie3 = new ApiRedisConfig();
-        apiRedisConfigOfMojie2.setHost(hostOfMojie);
-        apiRedisConfigOfMojie2.setPort(6381);
+        apiRedisConfigOfMojie3.setHost(hostOfMojie);
+        apiRedisConfigOfMojie3.setPort(6381);
 
         apiRedisConfigListOfMojie.add(apiRedisConfigOfMojie1);
         apiRedisConfigListOfMojie.add(apiRedisConfigOfMojie2);
@@ -80,8 +80,8 @@ public class ByConfigUtils {
         apiRedisConfigOfShuangzi2.setPort(6380);
 
         ApiRedisConfig apiRedisConfigOfShuangzi3 = new ApiRedisConfig();
-        apiRedisConfigOfShuangzi2.setHost(hostOfShuangzi);
-        apiRedisConfigOfShuangzi2.setPort(6381);
+        apiRedisConfigOfShuangzi3.setHost(hostOfShuangzi);
+        apiRedisConfigOfShuangzi3.setPort(6381);
 
         apiRedisConfigListOfShuangzi.add(apiRedisConfigOfShuangzi1);
         apiRedisConfigListOfShuangzi.add(apiRedisConfigOfShuangzi2);
@@ -126,8 +126,8 @@ public class ByConfigUtils {
         apiRedisConfigOfShuangyu2.setPort(6380);
 
         ApiRedisConfig apiRedisConfigOfShuangyu3 = new ApiRedisConfig();
-        apiRedisConfigOfShuangyu2.setHost(hostOfShuangyu);
-        apiRedisConfigOfShuangyu2.setPort(6381);
+        apiRedisConfigOfShuangyu3.setHost(hostOfShuangyu);
+        apiRedisConfigOfShuangyu3.setPort(6381);
 
         apiRedisConfigListOfShuangyu.add(apiRedisConfigOfShuangyu1);
         apiRedisConfigListOfShuangyu.add(apiRedisConfigOfShuangyu2);
@@ -172,8 +172,8 @@ public class ByConfigUtils {
         apiRedisConfigOfBaiyang2.setPort(6380);
 
         ApiRedisConfig apiRedisConfigOfBaiyang3 = new ApiRedisConfig();
-        apiRedisConfigOfBaiyang2.setHost(hostOfBaiyang);
-        apiRedisConfigOfBaiyang2.setPort(6381);
+        apiRedisConfigOfBaiyang3.setHost(hostOfBaiyang);
+        apiRedisConfigOfBaiyang3.setPort(6381);
 
         apiRedisConfigListOfBaiyang.add(apiRedisConfigOfBaiyang1);
         apiRedisConfigListOfBaiyang.add(apiRedisConfigOfBaiyang2);
