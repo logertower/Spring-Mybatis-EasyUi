@@ -54,6 +54,7 @@
 	}
 
 	function addTab(params) {
+	    console.info(params);
 		var iframe = '<iframe src="' + params.url + '" frameborder="0" style="border:0;width:100%;height:98%;"></iframe>';
 		var t = $('#index_tabs');
 		var opts = {
@@ -103,7 +104,7 @@
 		var paramobj = {
 			title: "用户信息管理",
 			iconCls: "status_online",
-			url: "${ctx}/layout/customer/customerManager.html"
+			url: ctx + "/layout/customer/customerManager.html"
 		}
 		addTab(paramobj);
 	}

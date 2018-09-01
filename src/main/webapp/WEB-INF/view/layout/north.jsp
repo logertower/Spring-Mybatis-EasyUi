@@ -105,12 +105,12 @@
 
 </style>
 <div class="logout" id="sessionInfoDiv" style="position: absolute; right: 20px; top: 10px;">
-	<%-- <c:if test="${user.id != null}">[<strong>${user.name}</strong>]，欢迎你！您使用[<strong>${user.ip}</strong>]IP登录！</c:if> --%>
-	<c:if test="${user.username!=null}">
-		<a>${user.username}</a>
-		<span>|</span>
-		<a onclick="logoutFun(true);">注销</a>
-	</c:if>
+	<strong>二狗同学</strong>，欢迎你！您使用<strong>这个系统</strong>
+	<%--<c:if test="${user.username!=null}">--%>
+		<%--<a>${user.username}</a>--%>
+		<%--<span>|</span>--%>
+		<%--<a onclick="logoutFun(true);">注销</a>--%>
+	<%--</c:if>--%>
 </div>
 <!-- <div style="position: absolute; right: 0px; bottom: 0px;">
 	<a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_pfMenu',iconCls:'cog'">更换皮肤</a> 

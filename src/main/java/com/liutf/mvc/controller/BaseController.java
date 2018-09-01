@@ -35,7 +35,7 @@ public class BaseController {
     public JsonResult expHandler(Exception ex) {
 
         if (ex instanceof LocalException) {
-            return new JsonResult(ex.getMessage(), errorInfos.getMsg(ex.getMessage()));
+            return new JsonResult(((LocalException) ex).getErrorCode(), errorInfos.getMsg(((LocalException) ex).getErrorCode()));
         } else {
             logger.error("系统未知异常", ex);
             return new JsonResult("000001", errorInfos.getMsg("000001"));
