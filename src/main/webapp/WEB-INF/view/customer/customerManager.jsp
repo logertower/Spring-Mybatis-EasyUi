@@ -30,6 +30,7 @@
                         <option value="delAndClear" id="delAndClear">删除账号并清除缓存</option>
                         <option value="clear">清除缓存</option>
                         <option value="makeOldThrid">制造老三方</option>
+                        <option value="clearLevelPointCache">清除用户等级缓存</option>
                     </select>
                 </td>
             </tr>

@@ -14,9 +14,13 @@
 
 
     <!-- 扫描所有的controller -->
-    <context:component-scan base-package="com.liutf.mvc" use-default-filters="false">
-        <context:include-filter type="regex" expression="com.liutf.mvc.controller.*"/>
-    </context:component-scan>
+    <!--<context:component-scan base-package="com.liutf.mvc" use-default-filters="false">-->
+        <!--<context:include-filter type="regex" expression="com.liutf.mvc.controller.*"/>-->
+        <!--<context:include-filter type="regex" expression="com.liutf.mvc.redis.*"/>-->
+        <!--<context:include-filter type="regex" expression="com.liutf.mvc.service.*"/>-->
+    <!--</context:component-scan>-->
+    <!--<context:annotation-config/>-->
+    <context:component-scan base-package="com.liutf"/>
 
     <!-- springMvc接收Date格式的数据需要配置，用以扫描@DateTimeFormat注解 -->
     <mvc:annotation-driven/>

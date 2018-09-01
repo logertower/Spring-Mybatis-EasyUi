@@ -16,9 +16,9 @@
 
 
     <!-- 修改配置 减少每次在service dao中增加class都需要声明注解 -->
-    <context:component-scan base-package="com.liutf.mvc" use-default-filters="false">
-        <context:include-filter type="regex" expression="com.liutf.mvc.service.*"/>
-    </context:component-scan>
+    <!--<context:component-scan base-package="com.liutf.mvc" use-default-filters="false">-->
+        <!--<context:include-filter type="regex" expression="com.liutf.mvc.service.*"/>-->
+    <!--</context:component-scan>-->
 
     <!-- 支持上传文件 -->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

@@ -7,9 +7,13 @@
     <bean id="errorInfos" class="com.liutf.common.exception.ErrorInfos">
         <property name="errMsgs">
             <map>
+                <!-- 基础错误码 -->
                 <entry key="000001" value="系统未知错误"/>
                 <entry key="200002" value="接口参数错误"/>
                 <entry key="200011" value="查询数据库错误"/><!-- 用来表示查询结果和预期不一致的错误  -->
+
+                <!-- 账号相关错误码 -->
+                <entry key="300000" value="账号不存在"/>
             </map>
         </property>
     </bean>

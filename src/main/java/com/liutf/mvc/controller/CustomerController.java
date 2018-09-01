@@ -2,17 +2,24 @@ package com.liutf.mvc.controller;
 
 import com.liutf.common.exception.LocalException;
 import com.liutf.common.jsonResult.JsonResult;
+import com.liutf.mvc.service.CustomerService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author liutf
  */
+@Controller
 @RequestMapping("/customer")
 public class CustomerController extends BaseController {
     public Logger log = Logger.getLogger(CustomerController.class);
+
+    @Autowired
+    private CustomerService customerService;
 
     /**
      * 后台管理进入页面
@@ -42,11 +49,12 @@ public class CustomerController extends BaseController {
         /**
          * 进行操作
          */
+        boolean result = customerService.customerManager(environment, operationType, conditionType, condition);
 
         /**
          * 返回结果
          */
-        return new JsonResult(1, true);
+        return new JsonResult(1, result);
     }
 
 }
