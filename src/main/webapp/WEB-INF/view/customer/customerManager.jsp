@@ -48,7 +48,8 @@
             </tr>
             <tr>
                 <td>条件:</td>
-                <td><input class="easyui-textbox" type="text" name="condition" id="condition" data-options="required:true"></input>
+                <td><input class="easyui-textbox" type="text" name="condition" id="condition"
+                           data-options="required:true"></input>
                 </td>
             </tr>
         </table>
@@ -62,7 +63,7 @@
 <script>
     function submitForm() {
         $('#ff').form('submit', {
-            url: ctx + "/customer/customerManager.html",
+            url: ctx + "/customer/customerManager.do",
             onSubmit: function () {
                 return $(this).form('enableValidation').form('validate');
             },
@@ -71,10 +72,10 @@
                 console.info(result);
                 if (result.success == 1) {
                     var msg = result.data + "";
-                    center(msg, "操作成功");
+                    topCenter(msg, "操作成功");
                 } else {
                     var errMsg = result.error.message;
-                    center(errMsg, '操作失败');
+                    topCenter(errMsg, '操作失败');
                 }
 
             }
@@ -83,13 +84,14 @@
     function clearForm() {
         $('#ff').form('reset')
     }
-    function center(message, title) {
+    function topCenter(message, title) {
         $.messager.show({
             title: title,
             msg: message,
-            showType: 'fade',
+            showType: 'slide',
             style: {
                 right: '',
+                top: document.body.scrollTop + document.documentElement.scrollTop,
                 bottom: ''
             }
         });
