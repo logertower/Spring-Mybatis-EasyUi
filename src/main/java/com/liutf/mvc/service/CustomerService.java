@@ -72,19 +72,19 @@ public class CustomerService {
         if ("delAndClear".equals(operationType)) {
             int i = customerDao.delCustomerByCustomerId(customer.getCustomerId());
             if (i > 0) {
-                customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile().replace("_test", ""), customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid().replace("_test", ""));
-                customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile().replace("_test", ""), customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid().replace("_test", ""));
+                customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+                customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
             }
 
         } else if ("clear".equals(operationType)) {
-            customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile().replace("_test", ""), customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid().replace("_test", ""));
-            customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile().replace("_test", ""), customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid().replace("_test", ""));
+            customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+            customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
 
         } else if ("makeOldThrid".equals(operationType)) {
             int i = customerDao.updateMobileToNullByCustomerId(customer.getCustomerId());
             if (i > 0) {
-                customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile().replace("_test", ""), customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid().replace("_test", ""));
-                customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile().replace("_test", ""), customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid().replace("_test", ""));
+                customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+                customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
             }
 
         } else if ("clearLevelPointCache".equals(operationType)) {
