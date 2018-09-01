@@ -60,7 +60,7 @@ public class CustomerController extends BaseController {
             /**
              * 进行操作
              */
-            boolean result = true;//customerService.customerManager(environment, operationType, conditionType, condition);
+            boolean result = customerService.customerManager(environment, operationType, conditionType, condition);
 
             if (result) {
                 log.info("[账号管理，操作成功]environment=" + environment + ",operationType=" + operationType + ",conditionType=" + conditionType + ",condition=" + condition);
