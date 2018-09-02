@@ -14,6 +14,8 @@
 
                 <!-- 账号相关错误码 -->
                 <entry key="300000" value="账号不存在"/>
+                <entry key="300001" value="账号不能成为微信老三方"/>
+                <entry key="300002" value="账号不能成为QQ老三方"/>
             </map>
         </property>
     </bean>

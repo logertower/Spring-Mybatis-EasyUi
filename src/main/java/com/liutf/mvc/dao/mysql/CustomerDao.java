@@ -63,11 +63,20 @@ public class CustomerDao {
         return jdbcTemplate.update(sql, new Object[]{customerId});
     }
 
-    public int updateMobileToNullByCustomerId(Integer customerId) {
+    public int updateMobileAndWechatUnionidToNullByCustomerId(Integer customerId) {
         JdbcTemplate jdbcTemplate = getJdbcTemplate();
 
         StringBuilder sb = new StringBuilder();
-        sb.append("update customer set mobile = '' where customer_id=?");
+        sb.append("update customer set mobile = mobile + '_test',wechat_unionid = wechat_unionid + '_test' where customer_id=?");
+        String sql = sb.toString();
+        return jdbcTemplate.update(sql, new Object[]{customerId});
+    }
+
+    public int updateMobileAndQqOpenIdToNullByCustomerId(Integer customerId) {
+        JdbcTemplate jdbcTemplate = getJdbcTemplate();
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("update customer set mobile = mobile + '_test',qq_openid = qq_openid + '_test' where customer_id=?");
         String sql = sb.toString();
         return jdbcTemplate.update(sql, new Object[]{customerId});
     }

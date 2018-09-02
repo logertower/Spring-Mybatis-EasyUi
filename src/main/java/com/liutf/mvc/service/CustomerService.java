@@ -5,6 +5,7 @@ import com.liutf.mvc.dao.mysql.CustomerDao;
 import com.liutf.mvc.entity.mysql.Customer;
 import com.liutf.mvc.redis.CustomerRedisService;
 import com.liutf.mvc.utils.MyThreadLocal;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,8 +81,25 @@ public class CustomerService {
             customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
             customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
 
-        } else if ("makeOldThrid".equals(operationType)) {
-            int i = customerDao.updateMobileToNullByCustomerId(customer.getCustomerId());
+        } else if ("makeWxOldThrid".equals(operationType)) {
+            if (StringUtils.isBlank(customer.getMobile()) || StringUtils.isBlank(customer.getWechatUnionid())) {
+                // <entry key="300001" value="账号不能成为微信老三方"/>
+                throw new LocalException("300001");
+            }
+
+            int i = customerDao.updateMobileAndQqOpenIdToNullByCustomerId(customer.getCustomerId());
+            if (i > 0) {
+                customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+                customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+            }
+
+        } else if ("makeQqOldThrid".equals(operationType)) {
+            if (StringUtils.isBlank(customer.getMobile()) || StringUtils.isBlank(customer.getQqOpenid())) {
+                //<entry key="300002" value="账号不能成为QQ老三方"/>
+                throw new LocalException("300002");
+            }
+
+            int i = customerDao.updateMobileAndWechatUnionidToNullByCustomerId(customer.getCustomerId());
             if (i > 0) {
                 customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
                 customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));

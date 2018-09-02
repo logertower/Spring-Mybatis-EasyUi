@@ -28,8 +28,9 @@
                 <td>
                     <select class="easyui-combobox" name="operationType" id="operationType">
                         <option value="delAndClear" id="delAndClear">删除账号并清除缓存</option>
-                        <option value="clear">清除缓存</option>
-                        <option value="makeOldThrid">制造老三方</option>
+                        <option value="clear">清除账号缓存</option>
+                        <option value="makeWxOldThrid">制造微信老三方</option>
+                        <option value="makeQqOldThrid">制造qq老三方</option>
                         <option value="clearLevelPointCache">清除用户等级缓存</option>
                     </select>
                 </td>
