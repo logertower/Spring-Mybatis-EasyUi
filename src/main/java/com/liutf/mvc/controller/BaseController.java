@@ -3,6 +3,7 @@ package com.liutf.mvc.controller;
 import com.liutf.common.exception.ErrorInfos;
 import com.liutf.common.exception.LocalException;
 import com.liutf.common.jsonResult.JsonResult;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class BaseController {
     public JsonResult expHandler(Exception ex) {
 
         if (ex instanceof LocalException) {
-            return new JsonResult(((LocalException) ex).getErrorCode(), errorInfos.getMsg(((LocalException) ex).getErrorCode()));
+            return new JsonResult(((LocalException) ex).getErrorCode(), errorInfos.getMsg(((LocalException) ex).getErrorCode()) + (StringUtils.isBlank(ex.getMessage()) ? "" : "，" + ex.getMessage()));
         } else {
             logger.error("系统未知异常", ex);
             return new JsonResult("000001", errorInfos.getMsg("000001"));

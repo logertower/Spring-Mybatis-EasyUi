@@ -5,6 +5,7 @@ import com.liutf.mvc.config.SqlServerConfig;
 import com.liutf.mvc.entity.mysql.Customer;
 import com.liutf.mvc.utils.MyThreadLocal;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -23,35 +24,56 @@ public class CustomerDao {
         JdbcTemplate jdbcTemplate = getJdbcTemplate();
 
         String sql = "select * from customer where customer_id=?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{customerId}, new BeanPropertyRowMapper<Customer>(Customer.class));
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[]{customerId}, new BeanPropertyRowMapper<Customer>(Customer.class));
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     public Customer getCustomerByIdCard(Integer idCard) {
         JdbcTemplate jdbcTemplate = getJdbcTemplate();
 
         String sql = "select * from customer where idcard=?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{idCard}, new BeanPropertyRowMapper<Customer>(Customer.class));
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[]{idCard}, new BeanPropertyRowMapper<Customer>(Customer.class));
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     public Customer getCustomerByMobile(String mobile) {
         JdbcTemplate jdbcTemplate = getJdbcTemplate();
 
         String sql = "select * from customer where mobile=?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{mobile}, new BeanPropertyRowMapper<Customer>(Customer.class));
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[]{mobile}, new BeanPropertyRowMapper<Customer>(Customer.class));
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     public Customer getCustomerByWechatUnionid(String wechatUionid) {
         JdbcTemplate jdbcTemplate = getJdbcTemplate();
 
         String sql = "select * from customer where wechat_unionid=?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{wechatUionid}, new BeanPropertyRowMapper<Customer>(Customer.class));
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[]{wechatUionid}, new BeanPropertyRowMapper<Customer>(Customer.class));
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+
     }
 
     public Customer getCustomerByQqOpenId(String qqOpenId) {
         JdbcTemplate jdbcTemplate = getJdbcTemplate();
 
         String sql = "select * from customer where qq_openid=?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{qqOpenId}, new BeanPropertyRowMapper<Customer>(Customer.class));
+        try {
+            return jdbcTemplate.queryForObject(sql, new Object[]{qqOpenId}, new BeanPropertyRowMapper<Customer>(Customer.class));
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     public int delCustomerByCustomerId(Integer customerId) {

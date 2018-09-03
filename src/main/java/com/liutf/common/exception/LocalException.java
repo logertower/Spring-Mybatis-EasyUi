@@ -16,10 +16,10 @@ public class LocalException extends Exception {
     /**
      * 含参数构造器
      *
-     * @param errorMsg 错误信息
+     * @param errorCode 错误信息
      */
-    public LocalException(String errorMsg) {
-        super(errorMsg);
+    public LocalException(String errorCode) {
+        this.setErrorCode(errorCode);
     }
 
     /**
