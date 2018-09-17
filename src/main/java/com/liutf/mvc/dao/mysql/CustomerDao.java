@@ -89,7 +89,7 @@ public class CustomerDao {
         JdbcTemplate jdbcTemplate = getJdbcTemplate();
 
         StringBuilder sb = new StringBuilder();
-        sb.append("update customer set mobile = mobile + '_test',wechat_unionid = wechat_unionid + '_test' where customer_id=?");
+        sb.append("update customer set mobile = '',wechat_unionid = wechat_unionid + '_test' where customer_id=?");
         String sql = sb.toString();
         return jdbcTemplate.update(sql, new Object[]{customerId});
     }
@@ -98,7 +98,7 @@ public class CustomerDao {
         JdbcTemplate jdbcTemplate = getJdbcTemplate();
 
         StringBuilder sb = new StringBuilder();
-        sb.append("update customer set mobile = mobile + '_test',qq_openid = qq_openid + '_test' where customer_id=?");
+        sb.append("update customer set mobile = '',qq_openid = qq_openid + '_test' where customer_id=?");
         String sql = sb.toString();
         return jdbcTemplate.update(sql, new Object[]{customerId});
     }
