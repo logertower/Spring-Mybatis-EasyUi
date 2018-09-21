@@ -158,7 +158,7 @@ public class ByConfigUtils {
          */
         ByConfig byConfigOfBaiyang = new ByConfig();
 
-        String hostOfBaiyang = "";
+        String hostOfBaiyang = "172.17.17.251";
 
         //api redis 配置 三个
         List<ApiRedisConfig> apiRedisConfigListOfBaiyang = new ArrayList<>();
