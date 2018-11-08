@@ -1,7 +1,5 @@
 package com.liutf.mvc.config;
 
-import java.util.List;
-
 /**
  * 配置类
  *
@@ -10,19 +8,19 @@ import java.util.List;
  */
 public class ByConfig {
 
-    private List<ApiRedisConfig> apiRedisConfigList;
+    //private List<ApiRedisConfig> apiRedisConfigList;
 
     private MemberRedisConfig memberRedisConfig;
 
     private SqlServerConfig sqlServerConfig;
 
-    public List<ApiRedisConfig> getApiRedisConfigList() {
-        return apiRedisConfigList;
-    }
-
-    public void setApiRedisConfigList(List<ApiRedisConfig> apiRedisConfigList) {
-        this.apiRedisConfigList = apiRedisConfigList;
-    }
+    //public List<ApiRedisConfig> getApiRedisConfigList() {
+    //    return apiRedisConfigList;
+    //}
+    //
+    //public void setApiRedisConfigList(List<ApiRedisConfig> apiRedisConfigList) {
+    //    this.apiRedisConfigList = apiRedisConfigList;
+    //}
 
     public MemberRedisConfig getMemberRedisConfig() {
         return memberRedisConfig;
