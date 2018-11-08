@@ -17,29 +17,6 @@ public class ByConfigUtils {
          */
         ByConfig byConfigOfMojie = new ByConfig();
 
-        //api redis 配置 三个
-        //List<ApiRedisConfig> apiRedisConfigListOfMojie = new ArrayList<>();
-        //
-        //String hostOfMojie = "172.17.253.251";
-        //
-        //ApiRedisConfig apiRedisConfigOfMojie1 = new ApiRedisConfig();
-        //apiRedisConfigOfMojie1.setHost(hostOfMojie);
-        //apiRedisConfigOfMojie1.setPort(6379);
-        //
-        //ApiRedisConfig apiRedisConfigOfMojie2 = new ApiRedisConfig();
-        //apiRedisConfigOfMojie2.setHost(hostOfMojie);
-        //apiRedisConfigOfMojie2.setPort(6380);
-        //
-        //ApiRedisConfig apiRedisConfigOfMojie3 = new ApiRedisConfig();
-        //apiRedisConfigOfMojie3.setHost(hostOfMojie);
-        //apiRedisConfigOfMojie3.setPort(6381);
-        //
-        //apiRedisConfigListOfMojie.add(apiRedisConfigOfMojie1);
-        //apiRedisConfigListOfMojie.add(apiRedisConfigOfMojie2);
-        //apiRedisConfigListOfMojie.add(apiRedisConfigOfMojie3);
-        //
-        //byConfigOfMojie.setApiRedisConfigList(apiRedisConfigListOfMojie);
-
         //member redis 配置 一个哨兵
         MemberRedisConfig memberRedisConfigOfMojie = new MemberRedisConfig();
         memberRedisConfigOfMojie.setSentinelHost("172.17.253.251:27002");
@@ -64,29 +41,6 @@ public class ByConfigUtils {
          */
         ByConfig byConfigOfShuangzi = new ByConfig();
 
-        String hostOfShuangzi = "172.17.12.251";
-
-        //api redis 配置 三个
-        //List<ApiRedisConfig> apiRedisConfigListOfShuangzi = new ArrayList<>();
-        //        //
-        //        //ApiRedisConfig apiRedisConfigOfShuangzi1 = new ApiRedisConfig();
-        //        //apiRedisConfigOfShuangzi1.setHost(hostOfShuangzi);
-        //        //apiRedisConfigOfShuangzi1.setPort(6379);
-        //        //
-        //        //ApiRedisConfig apiRedisConfigOfShuangzi2 = new ApiRedisConfig();
-        //        //apiRedisConfigOfShuangzi2.setHost(hostOfShuangzi);
-        //        //apiRedisConfigOfShuangzi2.setPort(6380);
-        //        //
-        //        //ApiRedisConfig apiRedisConfigOfShuangzi3 = new ApiRedisConfig();
-        //        //apiRedisConfigOfShuangzi3.setHost(hostOfShuangzi);
-        //        //apiRedisConfigOfShuangzi3.setPort(6381);
-        //        //
-        //        //apiRedisConfigListOfShuangzi.add(apiRedisConfigOfShuangzi1);
-        //        //apiRedisConfigListOfShuangzi.add(apiRedisConfigOfShuangzi2);
-        //        //apiRedisConfigListOfShuangzi.add(apiRedisConfigOfShuangzi3);
-        //        //
-        //        //byConfigOfShuangzi.setApiRedisConfigList(apiRedisConfigListOfShuangzi);
-
         //member redis 配置 一个哨兵
         MemberRedisConfig memberRedisConfigOfShuangzi = new MemberRedisConfig();
         memberRedisConfigOfShuangzi.setSentinelHost("172.17.12.251:27002");
@@ -110,29 +64,6 @@ public class ByConfigUtils {
          */
         ByConfig byConfigOfShuangyu = new ByConfig();
 
-        String hostOfShuangyu = "172.17.20.25";
-
-        //api redis 配置 三个
-        //List<ApiRedisConfig> apiRedisConfigListOfShuangyu = new ArrayList<>();
-        //
-        //ApiRedisConfig apiRedisConfigOfShuangyu1 = new ApiRedisConfig();
-        //apiRedisConfigOfShuangyu1.setHost(hostOfShuangyu);
-        //apiRedisConfigOfShuangyu1.setPort(6379);
-        //
-        //ApiRedisConfig apiRedisConfigOfShuangyu2 = new ApiRedisConfig();
-        //apiRedisConfigOfShuangyu2.setHost(hostOfShuangyu);
-        //apiRedisConfigOfShuangyu2.setPort(6380);
-        //
-        //ApiRedisConfig apiRedisConfigOfShuangyu3 = new ApiRedisConfig();
-        //apiRedisConfigOfShuangyu3.setHost(hostOfShuangyu);
-        //apiRedisConfigOfShuangyu3.setPort(6381);
-        //
-        //apiRedisConfigListOfShuangyu.add(apiRedisConfigOfShuangyu1);
-        //apiRedisConfigListOfShuangyu.add(apiRedisConfigOfShuangyu2);
-        //apiRedisConfigListOfShuangyu.add(apiRedisConfigOfShuangyu3);
-        //
-        //byConfigOfShuangyu.setApiRedisConfigList(apiRedisConfigListOfShuangyu);
-
         //member redis 配置 一个哨兵
         MemberRedisConfig memberRedisConfigOfShuangyu = new MemberRedisConfig();
         memberRedisConfigOfShuangyu.setSentinelHost("172.17.20.254:27002");
@@ -155,29 +86,6 @@ public class ByConfigUtils {
          * 初始化白羊座配置
          */
         ByConfig byConfigOfBaiyang = new ByConfig();
-
-        String hostOfBaiyang = "172.17.17.251";
-
-        //api redis 配置 三个
-        //List<ApiRedisConfig> apiRedisConfigListOfBaiyang = new ArrayList<>();
-        //
-        //ApiRedisConfig apiRedisConfigOfBaiyang1 = new ApiRedisConfig();
-        //apiRedisConfigOfBaiyang1.setHost(hostOfBaiyang);
-        //apiRedisConfigOfBaiyang1.setPort(6379);
-        //
-        //ApiRedisConfig apiRedisConfigOfBaiyang2 = new ApiRedisConfig();
-        //apiRedisConfigOfBaiyang2.setHost(hostOfBaiyang);
-        //apiRedisConfigOfBaiyang2.setPort(6380);
-        //
-        //ApiRedisConfig apiRedisConfigOfBaiyang3 = new ApiRedisConfig();
-        //apiRedisConfigOfBaiyang3.setHost(hostOfBaiyang);
-        //apiRedisConfigOfBaiyang3.setPort(6381);
-        //
-        //apiRedisConfigListOfBaiyang.add(apiRedisConfigOfBaiyang1);
-        //apiRedisConfigListOfBaiyang.add(apiRedisConfigOfBaiyang2);
-        //apiRedisConfigListOfBaiyang.add(apiRedisConfigOfBaiyang3);
-        //
-        //byConfigOfBaiyang.setApiRedisConfigList(apiRedisConfigListOfBaiyang);
 
         //member redis 配置 一个哨兵
         MemberRedisConfig memberRedisConfigOfBaiyang = new MemberRedisConfig();
