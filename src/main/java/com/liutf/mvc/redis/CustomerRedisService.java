@@ -105,6 +105,15 @@ public class CustomerRedisService {
     }
 
     /**
+     * 清除阻碍短信限制缓存
+     */
+    public boolean delForUnsms() {
+        //TODO LTF 如何清除这些缓存
+
+        return true;
+    }
+
+    /**
      * 删除member的等级缓存
      */
     public boolean delCustomerLevelPointCacheOfMember(Integer customerId) {
@@ -145,5 +154,4 @@ public class CustomerRedisService {
 
         return new RedisSentinelServiceImpl(appId, clusterId, sentinelHost, masterName, maxWaitMillis, maxTotal, minIdle, maxIdle, timeOut);
     }
-
 }

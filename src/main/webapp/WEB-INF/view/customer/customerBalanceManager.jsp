@@ -27,24 +27,20 @@
                 <td>操作类型:</td>
                 <td>
                     <select class="easyui-combobox" name="operationType" id="operationType">
-                        <option value="addBanance" id="addBanance">余额充值</option>
-                        <%--<option value="clear">清除账号缓存</option>--%>
-                        <%--<option value="makeWxOldThrid">制造微信老三方</option>--%>
-                        <%--<option value="makeQqOldThrid">制造qq老三方</option>--%>
-                        <%--<option value="clearLevelPointCache">清除用户等级缓存</option>--%>
+                        <option value="addBalance" id="addBalance">余额充值</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td>用户id:</td>
                 <td>
-                    <input class="easyui-textbox" type="text" name="condition" id="customerId" data-options="required:true"></input>
+                    <input class="easyui-textbox" type="text" name="customerId" id="customerId" data-options="required:true"></input>
                 </td>
             </tr>
             <tr>
                 <td>充值余额</td>
                 <td>
-                    <input class="easyui-textbox" type="text" name="condition" id="levelId" data-options="required:true"></input>
+                    <input class="easyui-textbox" type="text" name="balance" id="balance" data-options="required:true"></input>
                 </td>
             </tr>
         </table>
@@ -58,7 +54,7 @@
 <script>
     function submitForm() {
         $('#ff').form('submit', {
-            url: ctx + "/customer/customerManager.do",
+            url: ctx + "/customer/customerBalanceManager.do",
             onSubmit: function () {
                 return $(this).form('enableValidation').form('validate');
             },

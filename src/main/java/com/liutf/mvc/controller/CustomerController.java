@@ -119,7 +119,94 @@ public class CustomerController extends BaseController {
              */
             return new JsonResult(1, result);
         } catch (Exception e) {
-            log.error("[账号管理，操作失败]environment=" + environment + ",operationType=" + operationType + ",customerId=" + customerId + ",levelId=" + levelId, e);
+            log.error("[等级管理，操作失败]environment=" + environment + ",operationType=" + operationType + ",customerId=" + customerId + ",levelId=" + levelId, e);
+            throw e;
+        }
+    }
+
+
+    /**
+     * 用户余额信息管理
+     *
+     * @return
+     * @author liutf
+     */
+    @RequestMapping("/customerBalanceManager.do")
+    @ResponseBody
+    public JsonResult customerBalanceManager(String environment, String operationType, String customerId, String balance) throws LocalException {
+
+        try {
+            /**
+             * 参数校验
+             */
+            if (StringUtils.isBlank(environment)) {
+                throw new LocalException("200002", "环境不能为空");
+            }
+            if (StringUtils.isBlank(operationType)) {
+                throw new LocalException("200002", "操作类型不能为空");
+            }
+            if (StringUtils.isBlank(customerId) || !NumberUtils.isDigits(customerId)) {
+                throw new LocalException("200002", "用户Id不能为空或不是数字");
+            }
+            if (StringUtils.isBlank(balance)) {
+                throw new LocalException("200002", "用户余额不能为空");
+            }
+
+            /**
+             * 进行操作
+             */
+            boolean result = customerService.customerBalanceManager(environment, operationType, customerId, balance);
+
+            if (result) {
+                log.info("[用户余额信息管理，操作成功]environment=" + environment + ",operationType=" + operationType + ",customerId=" + customerId + ",balance=" + balance);
+            }
+
+            /**
+             * 返回结果
+             */
+            return new JsonResult(1, result);
+        } catch (Exception e) {
+            log.error("[余额管理，操作失败]environment=" + environment + ",operationType=" + operationType + ",customerId=" + customerId + ",balance=" + balance, e);
+            throw e;
+        }
+    }
+
+    /**
+     * 短信管理
+     *
+     * @return
+     * @author liutf
+     */
+    @RequestMapping("/customerMessageManager.do")
+    @ResponseBody
+    public JsonResult customerMessageManager(String environment, String operationType) throws LocalException {
+
+        try {
+            /**
+             * 参数校验
+             */
+            if (StringUtils.isBlank(environment)) {
+                throw new LocalException("200002", "环境不能为空");
+            }
+            if (StringUtils.isBlank(operationType)) {
+                throw new LocalException("200002", "操作类型不能为空");
+            }
+
+            /**
+             * 进行操作
+             */
+            boolean result = customerService.customerMessageManager(environment, operationType);
+
+            if (result) {
+                log.info("[短信管理，操作成功]environment=" + environment + ",operationType=" + operationType);
+            }
+
+            /**
+             * 返回结果
+             */
+            return new JsonResult(1, result);
+        } catch (Exception e) {
+            log.error("[短信管理，操作失败]environment=" + environment + ",operationType=" + operationType, e);
             throw e;
         }
     }

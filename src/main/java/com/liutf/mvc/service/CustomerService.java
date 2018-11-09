@@ -10,6 +10,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 /**
  * @description: UserService
  * @author: liutf
@@ -66,7 +68,10 @@ public class CustomerService {
 
         /**
          * 选择操作类型
-         * delAndClear、clear、makeOldThrid、clearLevelPointCache
+         * <option value="delAndClear" id="delAndClear">删除账号并清除缓存</option>
+         * <option value="clear">清除账号缓存</option>
+         * <option value="makeWxOldThrid">制造微信老三方</option>
+         * <option value="makeQqOldThrid">制造qq老三方</option>
          */
         if ("delAndClear".equals(operationType)) {
             int i = customerDao.delCustomerByCustomerId(customer.getCustomerId());
@@ -103,8 +108,6 @@ public class CustomerService {
                 customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
             }
 
-        } else if ("clearLevelPointCache".equals(operationType)) {
-            customerRedisService.delCustomerLevelPointCacheOfMember(customer.getCustomerId());
         }
 
         return true;
@@ -128,28 +131,83 @@ public class CustomerService {
         MyThreadLocal.set(environment);
 
         /**
-         * 条件类型
-         * customerId、idCard、mobile、weichatUnionid、qqOpenId
-         */
-        /**
          * 选择操作类型
-         * delAndClear、clear、makeOldThrid、clearLevelPointCache
+         * <option value="clearLevelPointCache">清除用户等级缓存</option>
+         * <option value="updateLevelPoint">修改用户等级</option>
          */
         int customerIdI = Integer.parseInt(customerId);
         if ("clearLevelPointCache".equals(operationType)) {
             customerRedisService.delCustomerLevelPointCacheOfMember(customerIdI);
 
         } else if ("updateLevelPoint".equals(operationType)) {
+            int levelIdI = Integer.parseInt(levelId);
 
-            int i = customerDao.updateCustomerLevelPointByCustomerId(customerIdI);
+            int i = customerDao.updateCustomerLevelPointByCustomerId(customerIdI, levelIdI);
 
             if (i > 0) {
                 customerRedisService.delCustomerLevelPointCacheOfMember(customerIdI);
             }
         }
 
+        return true;
+    }
 
-        return false;
+    /**
+     * 用户余额管理
+     *
+     * @param environment
+     * @param operationType
+     * @param customerId
+     * @param balance
+     * @return
+     */
+    public boolean customerBalanceManager(String environment, String operationType, String customerId, String balance) {
 
+        /**
+         * 选择环境
+         * mojie、shuangzi、shuangyu、baiyang
+         */
+        MyThreadLocal.set(environment);
+
+        /**
+         * 选择操作类型
+         * <option value="addBalance" id="addBalance">余额充值</option>
+         */
+        int customerIdI = Integer.parseInt(customerId);
+        BigDecimal balanceB = new BigDecimal(balance);
+        if ("addBalance".equals(operationType)) {
+            int i = customerDao.updateCustomerBalanceByCustomerId(customerIdI, balanceB);
+            if (i > 0) {
+                //TODO LTF 清除缓存
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * 短信管理
+     *
+     * @param environment
+     * @param operationType
+     * @return
+     */
+    public boolean customerMessageManager(String environment, String operationType) {
+
+        /**
+         * 选择环境
+         * mojie、shuangzi、shuangyu、baiyang
+         */
+        MyThreadLocal.set(environment);
+
+        /**
+         * 选择操作类型
+         * <option value="unsms" id="unsms">解除全部手机无法发送短信限制</option>
+         */
+        if ("unsms".equals(operationType)) {
+            customerRedisService.delForUnsms();
+        }
+
+        return true;
     }
 }

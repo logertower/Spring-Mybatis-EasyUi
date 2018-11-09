@@ -27,10 +27,6 @@
                 <td>操作类型:</td>
                 <td>
                     <select class="easyui-combobox" name="operationType" id="operationType">
-                        <%--<option value="delAndClear" id="delAndClear">删除账号并清除缓存</option>--%>
-                        <%--<option value="clear">清除账号缓存</option>--%>
-                        <%--<option value="makeWxOldThrid">制造微信老三方</option>--%>
-                        <%--<option value="makeQqOldThrid">制造qq老三方</option>--%>
                         <option value="clearLevelPointCache">清除用户等级缓存</option>
                         <option value="updateLevelPoint">修改用户等级</option>
                     </select>
@@ -40,19 +36,20 @@
                 <td>用户等级:</td>
                 <td>
                     <select class="easyui-combobox" name="levelId" id="levelId">
-                        <option value="v" id="v">v</option>
-                        <option value="v1">v1</option>
-                        <option value="v2">v2</option>v
-                        <option value="v3">v3</option>
-                        <option value="v4">v4</option>
-                        <option value="v5">v5</option>
+                        <option value="0" id="v">v</option>
+                        <option value="1">v1</option>
+                        <option value="2">v2</option>
+                        <option value="3">v3</option>
+                        <option value="4">v4</option>
+                        <option value="5">v5</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <td>用户id:</td>
                 <td>
-                    <input class="easyui-textbox" type="text" name="customerId" id="customerId" data-options="required:true"></input>
+                    <input class="easyui-textbox" type="text" name="customerId" id="customerId"
+                           data-options="required:true"></input>
                 </td>
             </tr>
         </table>
@@ -84,9 +81,11 @@
             }
         });
     }
+
     function clearForm() {
         $('#ff').form('reset')
     }
+
     function topCenter(message, title) {
         $.messager.show({
             title: title,

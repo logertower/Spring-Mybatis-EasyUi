@@ -8,19 +8,19 @@ package com.liutf.mvc.config;
  */
 public class ByConfig {
 
-    //private List<ApiRedisConfig> apiRedisConfigList;
-
     private MemberRedisConfig memberRedisConfig;
 
     private SqlServerConfig sqlServerConfig;
 
-    //public List<ApiRedisConfig> getApiRedisConfigList() {
-    //    return apiRedisConfigList;
-    //}
-    //
-    //public void setApiRedisConfigList(List<ApiRedisConfig> apiRedisConfigList) {
-    //    this.apiRedisConfigList = apiRedisConfigList;
-    //}
+    private MySqlConfig mysqlConfig;
+
+    public MySqlConfig getMysqlConfig() {
+        return mysqlConfig;
+    }
+
+    public void setMysqlConfig(MySqlConfig mysqlConfig) {
+        this.mysqlConfig = mysqlConfig;
+    }
 
     public MemberRedisConfig getMemberRedisConfig() {
         return memberRedisConfig;
