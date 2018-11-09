@@ -122,7 +122,13 @@
 				<%--</div>--%>
 				<div title="用户信息管理" data-options="border:false" style="overflow: hidden;">
 					<iframe src="${ctx}/layout/customer/customerManager.html" frameborder="0" style="border: 0; width: 100%; height: 98%;"></iframe>
-				</div>
+				<%--</div>--%>
+				<%--<div title="余额管理" data-options="border:false" style="overflow: hidden;">--%>
+					<%--<iframe src="${ctx}/layout/customer/customerManager.html" frameborder="0" style="border: 0; width: 100%; height: 98%;"></iframe>--%>
+				<%--</div>--%>
+				<%--<div title="短信管理" data-options="border:false" style="overflow: hidden;">--%>
+					<%--<iframe src="${ctx}/layout/customer/customerManager.html" frameborder="0" style="border: 0; width: 100%; height: 98%;"></iframe>--%>
+				<%--</div>--%>
 			</div>
 		</div>
 		<div data-options="region:'east',href:'${ctx}/layout/east.html'" title="日历" style="width: 230px; overflow: hidden;"></div>

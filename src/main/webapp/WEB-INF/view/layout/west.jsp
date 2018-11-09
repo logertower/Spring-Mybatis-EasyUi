@@ -100,11 +100,40 @@
 		}
 	}
 
+	<%--打开菜单--%>
+
 	function openCustomerManagerTab(){
 		var paramobj = {
 			title: "用户信息管理",
 			iconCls: "status_online",
 			url: ctx + "/layout/customer/customerManager.html"
+		}
+		addTab(paramobj);
+	}
+
+	function openCustomerLevelPointManagerTab(){
+		var paramobj = {
+			title: "用户等级管理",
+			iconCls: "status_online",
+			url: ctx + "/layout/customer/customerLevelPointManager.html"
+		}
+		addTab(paramobj);
+	}
+
+	function openCustomerBalanceManagerTab(){
+		var paramobj = {
+			title: "用户余额管理",
+			iconCls: "status_online",
+			url: ctx + "/layout/customer/customerBalanceManager.html"
+		}
+		addTab(paramobj);
+	}
+
+	function openMessageManagerTab(){
+		var paramobj = {
+			title: "短信管理",
+			iconCls: "status_online",
+			url: ctx + "/layout/customer/customerMessageManager.html"
 		}
 		addTab(paramobj);
 	}
@@ -116,6 +145,15 @@
 			<ul id="layout_west_tree">
 				<li>
 					<a href="#" plain="true" iconCls="status_online" title="用户信息管理" onclick="openCustomerManagerTab();">用户信息管理</a>
+				</li>
+				<li>
+					<a href="#" plain="true" iconCls="status_online" title="用户等级管理" onclick="openCustomerLevelPointManagerTab();">用户等级管理</a>
+				</li>
+				<li>
+					<a href="#" plain="true" iconCls="status_online" title="余额管理" onclick="openCustomerBalanceManagerTab();">余额管理</a>
+				</li>
+				<li>
+					<a href="#" plain="true" iconCls="status_online" title="短信管理" onclick="openMessageManagerTab();">短信管理</a>
 				</li>
 			</ul>
 		</div>

@@ -5,7 +5,7 @@
 <html>
 <meta charset="UTF-8">
 <body>
-<h2>用户信息管理</h2>
+<h2>短信管理</h2>
 <p>选择好各种选项然后提交</p>
 <div style="margin:20px 0;"></div>
 <%--<div class="easyui-panel" title="New Topic" style="width:400px">--%>
@@ -27,32 +27,32 @@
                 <td>操作类型:</td>
                 <td>
                     <select class="easyui-combobox" name="operationType" id="operationType">
-                        <option value="delAndClear" id="delAndClear">删除账号并清除缓存</option>
-                        <option value="clear">清除账号缓存</option>
-                        <option value="makeWxOldThrid">制造微信老三方</option>
-                        <option value="makeQqOldThrid">制造qq老三方</option>
+                        <option value="delAndClear" id="delAndClear">解除手机无法发送短信限制</option>
+                        <%--<option value="clear">清除账号缓存</option>--%>
+                        <%--<option value="makeWxOldThrid">制造微信老三方</option>--%>
+                        <%--<option value="makeQqOldThrid">制造qq老三方</option>--%>
                         <%--<option value="clearLevelPointCache">清除用户等级缓存</option>--%>
                     </select>
                 </td>
             </tr>
-            <tr>
-                <td>条件类型:</td>
-                <td>
-                    <select class="easyui-combobox" name="conditionType" id="conditionType">
-                        <option value="customerId" id="customerId">用户id</option>
-                        <option value="mobile">手机号</option>
+            <%--<tr>--%>
+                <%--<td>条件类型:</td>--%>
+                <%--<td>--%>
+                    <%--<select class="easyui-combobox" name="conditionType" id="conditionType">--%>
+                        <%--<option value="customerId" id="customerId">用户id</option>--%>
+                        <%--<option value="mobile">手机号</option>--%>
                         <%--<option value="idCard">idCard</option>--%>
                         <%--<option value="weichatUnionid">微信unionid</option>--%>
                         <%--<option value="qqOpenId">qqOpenId</option>--%>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>条件:</td>
-                <td><input class="easyui-textbox" type="text" name="condition" id="condition"
-                           data-options="required:true"></input>
-                </td>
-            </tr>
+                    <%--</select>--%>
+                <%--</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<td>条件:</td>--%>
+                <%--<td><input class="easyui-textbox" type="text" name="condition" id="condition"--%>
+                           <%--data-options="required:true"></input>--%>
+                <%--</td>--%>
+            <%--</tr>--%>
         </table>
     </form>
     <div style="text-align:center;padding:5px;width: 300px;">

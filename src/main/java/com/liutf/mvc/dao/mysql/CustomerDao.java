@@ -103,6 +103,11 @@ public class CustomerDao {
         return jdbcTemplate.update(sql, new Object[]{customerId});
     }
 
+    public int updateCustomerLevelPointByCustomerId(int customerIdI) {
+
+        没有msql数据库
+    }
+
     /**
      * 获取datasource
      */
@@ -125,4 +130,5 @@ public class CustomerDao {
 
         return new JdbcTemplate(basicDataSource);
     }
+
 }

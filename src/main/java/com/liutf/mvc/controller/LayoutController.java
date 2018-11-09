@@ -64,4 +64,22 @@ public class LayoutController {
         return mv;
     }
 
+    @RequestMapping("/customer/customerLevelPointManager.html")
+    public ModelAndView customercustomerLevelPointManager(HttpSession session) {
+        ModelAndView mv = new ModelAndView("/customer/customerLevelPointManager");
+        return mv;
+    }
+
+    @RequestMapping("/customer/customerBalanceManager.html")
+    public ModelAndView customerBalanceManager(HttpSession session) {
+        ModelAndView mv = new ModelAndView("/customer/customerBalanceManager");
+        return mv;
+    }
+
+    @RequestMapping("/customer/customerMessageManager.html")
+    public ModelAndView customerMessageManager(HttpSession session) {
+        ModelAndView mv = new ModelAndView("/customer/customerMessageManager");
+        return mv;
+    }
+
 }

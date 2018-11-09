@@ -109,4 +109,47 @@ public class CustomerService {
 
         return true;
     }
+
+    /**
+     * 用户等级管理
+     *
+     * @param environment
+     * @param operationType
+     * @param customerId
+     * @param levelId
+     * @return
+     */
+    public boolean customerLevelPointManager(String environment, String operationType, String customerId, String levelId) {
+
+        /**
+         * 选择环境
+         * mojie、shuangzi、shuangyu、baiyang
+         */
+        MyThreadLocal.set(environment);
+
+        /**
+         * 条件类型
+         * customerId、idCard、mobile、weichatUnionid、qqOpenId
+         */
+        /**
+         * 选择操作类型
+         * delAndClear、clear、makeOldThrid、clearLevelPointCache
+         */
+        int customerIdI = Integer.parseInt(customerId);
+        if ("clearLevelPointCache".equals(operationType)) {
+            customerRedisService.delCustomerLevelPointCacheOfMember(customerIdI);
+
+        } else if ("updateLevelPoint".equals(operationType)) {
+
+            int i = customerDao.updateCustomerLevelPointByCustomerId(customerIdI);
+
+            if (i > 0) {
+                customerRedisService.delCustomerLevelPointCacheOfMember(customerIdI);
+            }
+        }
+
+
+        return false;
+
+    }
 }
