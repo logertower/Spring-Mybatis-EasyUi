@@ -1,10 +1,10 @@
-package com.liutf.mvc.dao.mysql;
+package com.liutf.mvc.dao;
 
 import com.liutf.mvc.config.ByConfigUtils;
 import com.liutf.mvc.config.SqlServerConfig;
-import com.liutf.mvc.entity.mysql.Customer;
-import com.liutf.mvc.entity.mysql.CustomerBalance;
-import com.liutf.mvc.entity.mysql.CustomerLevelPoint;
+import com.liutf.mvc.entity.Customer;
+import com.liutf.mvc.entity.CustomerBalance;
+import com.liutf.mvc.entity.CustomerLevelPoint;
 import com.liutf.mvc.utils.MyThreadLocal;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -22,7 +22,7 @@ import java.util.Date;
  * @create 2018-09-01 下午 11:31
  */
 @Service
-public class CustomerDao {
+public class ToolsDao {
 
     public Customer getCustomerByCustomerId(Integer customerId) {
 

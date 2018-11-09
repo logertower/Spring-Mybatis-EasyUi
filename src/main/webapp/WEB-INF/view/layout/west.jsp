@@ -106,7 +106,7 @@
 		var paramobj = {
 			title: "用户信息管理",
 			iconCls: "status_online",
-			url: ctx + "/layout/customer/customerManager.html"
+			url: ctx + "/layout/tools/customerManager.html"
 		}
 		addTab(paramobj);
 	}
@@ -115,7 +115,7 @@
 		var paramobj = {
 			title: "用户等级管理",
 			iconCls: "status_online",
-			url: ctx + "/layout/customer/customerLevelPointManager.html"
+			url: ctx + "/layout/tools/customerLevelPointManager.html"
 		}
 		addTab(paramobj);
 	}
@@ -124,7 +124,7 @@
 		var paramobj = {
 			title: "用户余额管理",
 			iconCls: "status_online",
-			url: ctx + "/layout/customer/customerBalanceManager.html"
+			url: ctx + "/layout/tools/customerBalanceManager.html"
 		}
 		addTab(paramobj);
 	}
@@ -133,7 +133,7 @@
 		var paramobj = {
 			title: "短信管理",
 			iconCls: "status_online",
-			url: ctx + "/layout/customer/customerMessageManager.html"
+			url: ctx + "/layout/tools/customerMessageManager.html"
 		}
 		addTab(paramobj);
 	}

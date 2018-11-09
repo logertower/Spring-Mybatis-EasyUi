@@ -1,6 +1,6 @@
 package com.liutf.mvc.service;
 
-import com.liutf.mvc.entity.mysql.Test;
+import com.liutf.mvc.entity.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

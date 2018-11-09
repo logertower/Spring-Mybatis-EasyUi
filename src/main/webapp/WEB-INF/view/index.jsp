@@ -121,13 +121,13 @@
 					<%--<iframe src="${ctx}/layout/portal/index.html" frameborder="0" style="border: 0; width: 100%; height: 98%;"></iframe>--%>
 				<%--</div>--%>
 				<div title="用户信息管理" data-options="border:false" style="overflow: hidden;">
-					<iframe src="${ctx}/layout/customer/customerManager.html" frameborder="0" style="border: 0; width: 100%; height: 98%;"></iframe>
+					<iframe src="${ctx}/layout/tools/customerManager.html" frameborder="0" style="border: 0; width: 100%; height: 98%;"></iframe>
 				<%--</div>--%>
 				<%--<div title="余额管理" data-options="border:false" style="overflow: hidden;">--%>
-					<%--<iframe src="${ctx}/layout/customer/customerManager.html" frameborder="0" style="border: 0; width: 100%; height: 98%;"></iframe>--%>
+					<%--<iframe src="${ctx}/layout/tools/customerManager.html" frameborder="0" style="border: 0; width: 100%; height: 98%;"></iframe>--%>
 				<%--</div>--%>
 				<%--<div title="短信管理" data-options="border:false" style="overflow: hidden;">--%>
-					<%--<iframe src="${ctx}/layout/customer/customerManager.html" frameborder="0" style="border: 0; width: 100%; height: 98%;"></iframe>--%>
+					<%--<iframe src="${ctx}/layout/tools/customerManager.html" frameborder="0" style="border: 0; width: 100%; height: 98%;"></iframe>--%>
 				<%--</div>--%>
 			</div>
 		</div>

@@ -5,7 +5,7 @@
 <html>
 <meta charset="UTF-8">
 <body>
-<h2>短信管理</h2>
+<h2>用户等级管理</h2>
 <p>选择好各种选项然后提交</p>
 <div style="margin:20px 0;"></div>
 <%--<div class="easyui-panel" title="New Topic" style="width:400px">--%>
@@ -27,8 +27,29 @@
                 <td>操作类型:</td>
                 <td>
                     <select class="easyui-combobox" name="operationType" id="operationType">
-                        <option value="unsms" id="unsms">解除全部手机无法发送短信限制</option>
+                        <option value="clearLevelPointCache">清除用户等级缓存</option>
+                        <option value="updateLevelPoint">修改用户等级</option>
                     </select>
+                </td>
+            </tr>
+            <tr>
+                <td>用户等级:</td>
+                <td>
+                    <select class="easyui-combobox" name="levelId" id="levelId">
+                        <option value="0" id="v">v</option>
+                        <option value="1">v1</option>
+                        <option value="2">v2</option>
+                        <option value="3">v3</option>
+                        <option value="4">v4</option>
+                        <option value="5">v5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>用户id:</td>
+                <td>
+                    <input class="easyui-textbox" type="text" name="customerId" id="customerId"
+                           data-options="required:true"></input>
                 </td>
             </tr>
         </table>
@@ -42,7 +63,7 @@
 <script>
     function submitForm() {
         $('#ff').form('submit', {
-            url: ctx + "/customer/customerMessageManager.do",
+            url: ctx + "/tools/customerLevelPointManager.do",
             onSubmit: function () {
                 return $(this).form('enableValidation').form('validate');
             },

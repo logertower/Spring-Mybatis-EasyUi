@@ -1,4 +1,4 @@
-package com.liutf.mvc.entity.mysql;
+package com.liutf.mvc.entity;
 
 public class Test {
     private String t1;

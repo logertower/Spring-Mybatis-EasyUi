@@ -58,27 +58,27 @@ public class LayoutController {
     }
 
 
-    @RequestMapping("/customer/customerManager.html")
+    @RequestMapping("/tools/customerManager.html")
     public ModelAndView customerManager(HttpSession session) {
-        ModelAndView mv = new ModelAndView("/customer/customerManager");
+        ModelAndView mv = new ModelAndView("/tools/customerManager");
         return mv;
     }
 
-    @RequestMapping("/customer/customerLevelPointManager.html")
+    @RequestMapping("/tools/customerLevelPointManager.html")
     public ModelAndView customercustomerLevelPointManager(HttpSession session) {
-        ModelAndView mv = new ModelAndView("/customer/customerLevelPointManager");
+        ModelAndView mv = new ModelAndView("/tools/customerLevelPointManager");
         return mv;
     }
 
-    @RequestMapping("/customer/customerBalanceManager.html")
+    @RequestMapping("/tools/customerBalanceManager.html")
     public ModelAndView customerBalanceManager(HttpSession session) {
-        ModelAndView mv = new ModelAndView("/customer/customerBalanceManager");
+        ModelAndView mv = new ModelAndView("/tools/customerBalanceManager");
         return mv;
     }
 
-    @RequestMapping("/customer/customerMessageManager.html")
+    @RequestMapping("/tools/customerMessageManager.html")
     public ModelAndView customerMessageManager(HttpSession session) {
-        ModelAndView mv = new ModelAndView("/customer/customerMessageManager");
+        ModelAndView mv = new ModelAndView("/tools/customerMessageManager");
         return mv;
     }
 

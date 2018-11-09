@@ -1,9 +1,9 @@
 package com.liutf.mvc.service;
 
 import com.liutf.common.exception.LocalException;
-import com.liutf.mvc.dao.mysql.CustomerDao;
-import com.liutf.mvc.entity.mysql.Customer;
-import com.liutf.mvc.redis.CustomerRedisService;
+import com.liutf.mvc.dao.ToolsDao;
+import com.liutf.mvc.entity.Customer;
+import com.liutf.mvc.redis.ToolsRedisService;
 import com.liutf.mvc.utils.MyThreadLocal;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
@@ -19,14 +19,14 @@ import java.math.BigDecimal;
  * @version: V1.0.0
  */
 @Service
-public class CustomerService {
+public class ToolsService {
 
-    public Logger log = Logger.getLogger(CustomerService.class);
+    public Logger log = Logger.getLogger(ToolsService.class);
 
     @Autowired
-    private CustomerDao customerDao;
+    private ToolsDao toolsDao;
     @Autowired
-    private CustomerRedisService customerRedisService;
+    private ToolsRedisService toolsRedisService;
 
     /**
      * 账号管理
@@ -50,15 +50,15 @@ public class CustomerService {
          */
         Customer customer = null;
         if ("customerId".equals(conditionType)) {
-            customer = customerDao.getCustomerByCustomerId(Integer.parseInt(condition));
+            customer = toolsDao.getCustomerByCustomerId(Integer.parseInt(condition));
         } else if ("idCard".equals(conditionType)) {
-            customer = customerDao.getCustomerByIdCard(Integer.parseInt(condition));
+            customer = toolsDao.getCustomerByIdCard(Integer.parseInt(condition));
         } else if ("mobile".equals(conditionType)) {
-            customer = customerDao.getCustomerByMobile(condition);
+            customer = toolsDao.getCustomerByMobile(condition);
         } else if ("weichatUnionid".equals(conditionType)) {
-            customer = customerDao.getCustomerByWechatUnionid(condition);
+            customer = toolsDao.getCustomerByWechatUnionid(condition);
         } else if ("qqOpenId".equals(conditionType)) {
-            customer = customerDao.getCustomerByQqOpenId(condition);
+            customer = toolsDao.getCustomerByQqOpenId(condition);
         }
 
         if (customer == null) {
@@ -74,15 +74,15 @@ public class CustomerService {
          * <option value="makeQqOldThrid">制造qq老三方</option>
          */
         if ("delAndClear".equals(operationType)) {
-            int i = customerDao.delCustomerByCustomerId(customer.getCustomerId());
+            int i = toolsDao.delCustomerByCustomerId(customer.getCustomerId());
             if (i > 0) {
-                customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
-                customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+                toolsRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+                toolsRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
             }
 
         } else if ("clear".equals(operationType)) {
-            customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
-            customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+            toolsRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+            toolsRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
 
         } else if ("makeWxOldThrid".equals(operationType)) {
             if (StringUtils.isBlank(customer.getMobile()) || StringUtils.isBlank(customer.getWechatUnionid())) {
@@ -90,10 +90,10 @@ public class CustomerService {
                 throw new LocalException("300001");
             }
 
-            int i = customerDao.updateMobileAndQqOpenIdToNullByCustomerId(customer.getCustomerId());
+            int i = toolsDao.updateMobileAndQqOpenIdToNullByCustomerId(customer.getCustomerId());
             if (i > 0) {
-                customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
-                customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+                toolsRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+                toolsRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
             }
 
         } else if ("makeQqOldThrid".equals(operationType)) {
@@ -102,10 +102,10 @@ public class CustomerService {
                 throw new LocalException("300002");
             }
 
-            int i = customerDao.updateMobileAndWechatUnionidToNullByCustomerId(customer.getCustomerId());
+            int i = toolsDao.updateMobileAndWechatUnionidToNullByCustomerId(customer.getCustomerId());
             if (i > 0) {
-                customerRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
-                customerRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+                toolsRedisService.delCustomerCacheOfApi(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
+                toolsRedisService.delCustomerCacheOfMember(customer.getCustomerId(), customer.getIdcard(), customer.getMobile() == null ? null : customer.getMobile().replace("_test", ""), customer.getWechatUnionid() == null ? null : customer.getWechatUnionid().replace("_test", ""), customer.getQqOpenid() == null ? null : customer.getQqOpenid().replace("_test", ""));
             }
 
         }
@@ -137,15 +137,15 @@ public class CustomerService {
          */
         int customerIdI = Integer.parseInt(customerId);
         if ("clearLevelPointCache".equals(operationType)) {
-            customerRedisService.delCustomerLevelPointCacheOfMember(customerIdI);
+            toolsRedisService.delCustomerLevelPointCacheOfMember(customerIdI);
 
         } else if ("updateLevelPoint".equals(operationType)) {
             int levelIdI = Integer.parseInt(levelId);
 
-            int i = customerDao.updateCustomerLevelPointByCustomerId(customerIdI, levelIdI);
+            int i = toolsDao.updateCustomerLevelPointByCustomerId(customerIdI, levelIdI);
 
             if (i > 0) {
-                customerRedisService.delCustomerLevelPointCacheOfMember(customerIdI);
+                toolsRedisService.delCustomerLevelPointCacheOfMember(customerIdI);
             }
         }
 
@@ -176,7 +176,7 @@ public class CustomerService {
         int customerIdI = Integer.parseInt(customerId);
         BigDecimal balanceB = new BigDecimal(balance);
         if ("addBalance".equals(operationType)) {
-            int i = customerDao.updateCustomerBalanceByCustomerId(customerIdI, balanceB);
+            int i = toolsDao.updateCustomerBalanceByCustomerId(customerIdI, balanceB);
             if (i > 0) {
                 //TODO LTF 清除缓存
             }
@@ -205,7 +205,7 @@ public class CustomerService {
          * <option value="unsms" id="unsms">解除全部手机无法发送短信限制</option>
          */
         if ("unsms".equals(operationType)) {
-            customerRedisService.delForUnsms();
+            toolsRedisService.delForUnsms();
         }
 
         return true;

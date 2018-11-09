@@ -1,4 +1,4 @@
-package com.liutf.mvc.entity.mysql;
+package com.liutf.mvc.entity;
 
 import java.io.Serializable;
 import java.util.Date;

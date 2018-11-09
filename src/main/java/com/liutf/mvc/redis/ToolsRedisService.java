@@ -18,7 +18,7 @@ import redis.clients.jedis.Pipeline;
  * @create 2018-09-01 下午 06:16
  */
 @Service
-public class CustomerRedisService {
+public class ToolsRedisService {
 
     /**
      * 清除api的用户缓存
@@ -29,7 +29,6 @@ public class CustomerRedisService {
 
         ByConfig byConfig = ByConfigUtils.get(environment);
 
-        //for (ApiRedisConfig apiRedisConfig : byConfig.getApiRedisConfigList()) {
         try {
             RedisSentinelService redisSentinelService = getSentinel();
             BPipeline bp = redisSentinelService.pipeline();

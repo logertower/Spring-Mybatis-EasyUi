@@ -2,7 +2,7 @@ package com.liutf.mvc.controller;
 
 import com.liutf.common.exception.LocalException;
 import com.liutf.common.jsonResult.JsonResult;
-import com.liutf.mvc.service.CustomerService;
+import com.liutf.mvc.service.ToolsService;
 import com.liutf.mvc.utils.StringUtil;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author liutf
  */
 @Controller
-@RequestMapping("/customer")
-public class CustomerController extends BaseController {
-    public Logger log = Logger.getLogger(CustomerController.class);
+@RequestMapping("/tools")
+public class ToolsController extends BaseController {
+    public Logger log = Logger.getLogger(ToolsController.class);
 
     @Autowired
-    private CustomerService customerService;
+    private ToolsService toolsService;
 
     /**
      * 用户信息管理
@@ -61,7 +61,7 @@ public class CustomerController extends BaseController {
             /**
              * 进行操作
              */
-            boolean result = customerService.customerManager(environment, operationType, conditionType, condition);
+            boolean result = toolsService.customerManager(environment, operationType, conditionType, condition);
 
             if (result) {
                 log.info("[账号管理，操作成功]environment=" + environment + ",operationType=" + operationType + ",conditionType=" + conditionType + ",condition=" + condition);
@@ -108,7 +108,7 @@ public class CustomerController extends BaseController {
             /**
              * 进行操作
              */
-            boolean result = customerService.customerLevelPointManager(environment, operationType, customerId, levelId);
+            boolean result = toolsService.customerLevelPointManager(environment, operationType, customerId, levelId);
 
             if (result) {
                 log.info("[用户等级信息管理，操作成功]environment=" + environment + ",operationType=" + operationType + ",customerId=" + customerId + ",levelId=" + levelId);
@@ -155,7 +155,7 @@ public class CustomerController extends BaseController {
             /**
              * 进行操作
              */
-            boolean result = customerService.customerBalanceManager(environment, operationType, customerId, balance);
+            boolean result = toolsService.customerBalanceManager(environment, operationType, customerId, balance);
 
             if (result) {
                 log.info("[用户余额信息管理，操作成功]environment=" + environment + ",operationType=" + operationType + ",customerId=" + customerId + ",balance=" + balance);
@@ -195,7 +195,7 @@ public class CustomerController extends BaseController {
             /**
              * 进行操作
              */
-            boolean result = customerService.customerMessageManager(environment, operationType);
+            boolean result = toolsService.customerMessageManager(environment, operationType);
 
             if (result) {
                 log.info("[短信管理，操作成功]environment=" + environment + ",operationType=" + operationType);

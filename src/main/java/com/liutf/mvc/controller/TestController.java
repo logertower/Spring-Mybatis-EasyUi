@@ -2,7 +2,7 @@ package com.liutf.mvc.controller;
 
 import com.liutf.common.exception.LocalException;
 import com.liutf.common.jsonResult.JsonResult;
-import com.liutf.mvc.entity.mysql.Test;
+import com.liutf.mvc.entity.Test;
 import com.liutf.mvc.service.TestService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

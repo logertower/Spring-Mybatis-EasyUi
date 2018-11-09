@@ -11,7 +11,7 @@
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true" userId="root" password=""/>
         <!-- <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" connectionURL="jdbc:sqlserver://192.168.99.69:1433;database=by_dev" userId="biyaodev" password="biyao" /> -->
-        <javaModelGenerator targetPackage="com.liutf.mvc.entity.mysql" targetProject="D:\java_tools\workspace_all\demo_idea_workspace\Spring-Mybatis-EasyUi\Spring-Mybatis-EasyUi\src\main\java"/>
+        <javaModelGenerator targetPackage="com.liutf.mvc.entity.dto" targetProject="D:\java_tools\workspace_all\demo_idea_workspace\Spring-Mybatis-EasyUi\Spring-Mybatis-EasyUi\src\main\java"/>
         <sqlMapGenerator targetPackage="com.liutf.mvc.mapper.mysql" targetProject="D:\java_tools\workspace_all\demo_idea_workspace\Spring-Mybatis-EasyUi\Spring-Mybatis-EasyUi\src\main\java"/>
         <javaClientGenerator targetPackage="com.liutf.mvc.dao.mysql" targetProject="D:\java_tools\workspace_all\demo_idea_workspace\Spring-Mybatis-EasyUi\Spring-Mybatis-EasyUi\src\main\java" type="XMLMAPPER"/>
 
