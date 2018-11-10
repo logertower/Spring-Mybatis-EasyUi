@@ -17,7 +17,6 @@ public class ByConfigUtils {
 
     @PostConstruct
     public static void init() {
-        //TODO LTF 从配置文件（json）结构中，加载初始化数据
 
         /**
          * 初始化摩羯座配置
