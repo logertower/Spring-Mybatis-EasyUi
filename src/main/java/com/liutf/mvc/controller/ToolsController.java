@@ -1,5 +1,7 @@
 package com.liutf.mvc.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.liutf.common.exception.LocalException;
 import com.liutf.common.jsonResult.JsonResult;
 import com.liutf.mvc.service.ToolsService;
@@ -22,6 +24,32 @@ public class ToolsController extends BaseController {
 
     @Autowired
     private ToolsService toolsService;
+
+
+    /**
+     * 动态环境获取
+     *
+     * @return
+     * @throws LocalException
+     */
+    @RequestMapping("/dynamicEnvironment.do")
+    @ResponseBody
+    public JsonResult dynamicEnvironment() throws LocalException {
+        try {
+            /**
+             * 进行操作
+             */
+            JSONArray result = toolsService.dynamicEnvironment();
+
+            /**
+             * 返回结果
+             */
+            return new JsonResult(1, result);
+        } catch (Exception e) {
+            log.error("[动态环境获取，操作失败]", e);
+            throw e;
+        }
+    }
 
     /**
      * 用户信息管理

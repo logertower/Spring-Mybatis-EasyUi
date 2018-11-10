@@ -16,10 +16,10 @@
                 <td>环境:</td>
                 <td>
                     <select class="easyui-combobox" name="environment" id="environment">
-                        <option value="mojie" id="mojie">摩羯</option>
-                        <option value="shuangzi">双子</option>
-                        <option value="shuangyu">双鱼</option>
-                        <option value="baiyang">白羊</option>
+                        <%--<option value="mojie" id="mojie">摩羯</option>--%>
+                        <%--<option value="shuangzi">双子</option>--%>
+                        <%--<option value="shuangyu">双鱼</option>--%>
+                        <%--<option value="baiyang">白羊</option>--%>
                     </select>
                 </td>
             </tr>
@@ -62,6 +62,34 @@
 </div>
 <%--</div>--%>
 <script>
+    $(function () {// 初始化内容
+        initDynamicEnvironment();
+    });
+
+    function initDynamicEnvironment() {//初始化环境
+        var url = ctx + "/tools/dynamicEnvironment.do";
+        $.get(url, function (data, status) {
+            if (status == "success") {
+                // console.info(data);
+                // console.info(status);
+                var dynamicEnvironment = "";
+                var result = data.data;
+                console.info(result);
+                for (var i = 0; i < result.length; i++) {
+                    var line = result[i];
+                    dynamicEnvironment = dynamicEnvironment + "<option value='" + line.environment + "' id='" + line.environment + "'>" + line.environmentName + "</option>";
+                }
+                console.info(dynamicEnvironment);
+                //TODO LTF 无法成功
+                $("#environment").html(dynamicEnvironment);
+            } else {
+                topCenter('请联系管理员 二狗 同学', '初始化环境失败');
+                console.info(data);
+                console.info(status);
+            }
+        });
+    }
+
     function submitForm() {
         $('#ff').form('submit', {
             url: ctx + "/tools/customerManager.do",
@@ -82,9 +110,11 @@
             }
         });
     }
+
     function clearForm() {
         $('#ff').form('reset')
     }
+
     function topCenter(message, title) {
         $.messager.show({
             title: title,

@@ -34,13 +34,15 @@
             <tr>
                 <td>用户id:</td>
                 <td>
-                    <input class="easyui-textbox" type="text" name="customerId" id="customerId" data-options="required:true"></input>
+                    <input class="easyui-textbox" type="text" name="customerId" id="customerId"
+                           data-options="required:true"></input>
                 </td>
             </tr>
             <tr>
                 <td>充值余额</td>
                 <td>
-                    <input class="easyui-textbox" type="text" name="balance" id="balance" data-options="required:true"></input>
+                    <input class="easyui-textbox" type="text" name="balance" id="balance"
+                           data-options="required:true"></input>
                 </td>
             </tr>
         </table>
@@ -52,6 +54,18 @@
 </div>
 <%--</div>--%>
 <script>
+    $(function () {// 初始化内容
+        initDynamicEnvironment();
+    });
+
+    function initDynamicEnvironment() {//初始化环境
+        var url = ctx + "/tools/dynamicEnvironment.do";
+        $.get(url, function (data, status) {
+            console.info(data);
+            console.info(status);
+        });
+    }
+
     function submitForm() {
         $('#ff').form('submit', {
             url: ctx + "/tools/customerBalanceManager.do",
@@ -72,9 +86,11 @@
             }
         });
     }
+
     function clearForm() {
         $('#ff').form('reset')
     }
+
     function topCenter(message, title) {
         $.messager.show({
             title: title,

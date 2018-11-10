@@ -1,16 +1,22 @@
 package com.liutf.mvc.service;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.liutf.common.exception.LocalException;
+import com.liutf.mvc.config.ByConfig;
+import com.liutf.mvc.config.ByConfigUtils;
 import com.liutf.mvc.dao.ToolsDao;
 import com.liutf.mvc.entity.Customer;
 import com.liutf.mvc.redis.ToolsRedisService;
 import com.liutf.mvc.utils.MyThreadLocal;
+import com.mchange.lang.ByteUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 /**
  * @description: UserService
@@ -209,5 +215,27 @@ public class ToolsService {
         }
 
         return true;
+    }
+
+    /**
+     * 动态环境获取
+     *
+     * @return
+     */
+    public JSONArray dynamicEnvironment() {
+        JSONArray result = new JSONArray();
+
+        Map<String, ByConfig> byConfigMap = ByConfigUtils.byConfigMap;
+
+        for (ByConfig byConfig : byConfigMap.values()) {
+            JSONObject jsonObject = new JSONObject();
+
+            jsonObject.put("environment", byConfig.getEnvironment());
+            jsonObject.put("environmentName", byConfig.getEnvironmentName());
+
+            result.add(jsonObject);
+        }
+
+        return result;
     }
 }

@@ -1,5 +1,8 @@
 package com.liutf.mvc.config;
 
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,15 +10,22 @@ import java.util.Map;
  * @author ltf
  * @create 2018-09-01 下午 06:33
  */
+@Component
 public class ByConfigUtils {
 
     public static Map<String, ByConfig> byConfigMap = new HashMap<>();
 
+    @PostConstruct
     public static void init() {
+        //TODO LTF 从配置文件（json）结构中，加载初始化数据
+
         /**
          * 初始化摩羯座配置
          */
         ByConfig byConfigOfMojie = new ByConfig();
+
+        byConfigOfMojie.setEnvironment("mojie");
+        byConfigOfMojie.setEnvironmentName("摩羯");
 
         //member redis 配置 一个哨兵
         MemberRedisConfig memberRedisConfigOfMojie = new MemberRedisConfig();
@@ -40,6 +50,8 @@ public class ByConfigUtils {
          * 初始化双子座配置
          */
         ByConfig byConfigOfShuangzi = new ByConfig();
+        byConfigOfShuangzi.setEnvironment("shuangzi");
+        byConfigOfShuangzi.setEnvironmentName("双子");
 
         //member redis 配置 一个哨兵
         MemberRedisConfig memberRedisConfigOfShuangzi = new MemberRedisConfig();
@@ -64,6 +76,9 @@ public class ByConfigUtils {
          */
         ByConfig byConfigOfShuangyu = new ByConfig();
 
+        byConfigOfShuangyu.setEnvironment("shuangyu");
+        byConfigOfShuangyu.setEnvironmentName("双鱼");
+
         //member redis 配置 一个哨兵
         MemberRedisConfig memberRedisConfigOfShuangyu = new MemberRedisConfig();
         memberRedisConfigOfShuangyu.setSentinelHost("172.17.20.254:27002");
@@ -87,6 +102,9 @@ public class ByConfigUtils {
          */
         ByConfig byConfigOfBaiyang = new ByConfig();
 
+        byConfigOfBaiyang.setEnvironment("baiyang");
+        byConfigOfBaiyang.setEnvironmentName("白羊");
+
         //member redis 配置 一个哨兵
         MemberRedisConfig memberRedisConfigOfBaiyang = new MemberRedisConfig();
         memberRedisConfigOfBaiyang.setSentinelHost("172.17.17.251:27002");
@@ -106,9 +124,6 @@ public class ByConfigUtils {
     }
 
     public static ByConfig get(String environment) {
-        if (byConfigMap == null || byConfigMap.isEmpty()) {
-            init();
-        }
         return byConfigMap.get(environment);
     }
 
